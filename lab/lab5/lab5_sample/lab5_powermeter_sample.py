@@ -7,8 +7,7 @@ import time
 
 # define the gateway IP (host) and port
 # normally Modbus TCP uses port number 502
-# The IP address is 100 but if not working, please let TA know.
-host = "192.168.1.100"
+host = "10.165.67.146"
 port = 502
 
 # readReg function is returning decoded power meter data
