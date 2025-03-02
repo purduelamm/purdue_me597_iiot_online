@@ -15,7 +15,7 @@ port = 502
 # Args are address:str = starting register address to read, length:Int = Consequtive length of the register to read
 
 def readReg(address, length, slave=1):
-    read = client.read_holding_registers(address, length, slave=1)
+    read = client.read_holding_registers(address, count=length, slave=1)
     reg = read.registers
     decoder = BinaryPayloadDecoder.fromRegisters(reg, byteorder=Endian.BIG, wordorder=Endian.BIG)
     value = decoder.decode_32bit_float()
@@ -25,7 +25,7 @@ def readReg(address, length, slave=1):
 while True:
     try:
         # define client object of the host and port
-        client = ModbusTcpClient(host, port)
+        client = ModbusTcpClient(host, port=port)
         client.connect()
         
         now = datetime.datetime.now()
